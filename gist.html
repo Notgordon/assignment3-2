@@ -1,0 +1,32 @@
+<html>
+<head>
+<script src='gist.js'></script>
+
+</head>
+<body>
+	<h3> Ajax Assignment: Gist List </h3>
+	<input type='number' name='pageNum'> Number of Pages
+	<div>
+		<label>Python</label>
+		<input type='checkbox' name='Python'>
+	</div>
+	<div>	
+		<label>JSON</label>
+		<input type='checkbox' name='JSON'>
+	</div>	
+		<label>JavaScript</label>
+		<input type='checkbox' name='JavaScript'>
+	<div>
+		<label>SQL</label>
+		<input type='checkbox' name='SQL'>
+	</div>
+	<input type='button' name='search' onclick='search()' value='Search'>
+
+	<section>
+		<ul id="gistList">
+		</ul>
+	</section>
+	
+	<div id="output"></div>
+</body>
+</html>
