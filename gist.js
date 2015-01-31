@@ -9,12 +9,24 @@ var settings = null;
 //Gist Object
 
 
-function createGistList(ul, lang){
+function createGistList(){
 	
+	var ul = document.getElementById("gistList");		 
+	 
+	var li = document.createElement("li"); 
+
+	li.appendChild(document.createTextNode("test"));
 	
-	
+	ul.appendChild(li);
 	
 }
+
+
+	
+	
+	
+	
+
 
 
 /*AJAX Section*/
@@ -53,7 +65,7 @@ function search(){
 			var gist = JSON.parse(this.responseText) // gist JSON object 
 			var language = null; //object properties
 			
-			//createGistList(document.getElementById('gistList'));
+			createGistList();
 		
 		}
 	}
