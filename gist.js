@@ -24,7 +24,7 @@ function createGistList(arr){
 	a.href = arr[i].html_url;
 	
 	
-	dd.appendChild(document.createTextNode(arr[i].files.language));
+	dd.appendChild(document.createTextNode(arr[i].language));
 	a.appendChild(document.createTextNode(arr[i].description));
 	dt.appendChild(dd);
 	dt.appendChild(a);
@@ -50,8 +50,12 @@ function deleteGistList(arr){
 }
 	
 	
-	
-	
+//Global HTML Object	
+function Object(params) {
+  this.name = params.name;
+  this.description = params.description;
+  this.html_url = params.html_url	
+}
 
 
 
@@ -67,11 +71,13 @@ function makeString(obj){
 	return str.join('&');
 }
 
+
+
 function search(){
 	
 	
 	var pNum = document.getElementsByName('pageNum');
-	var gistArray = new Array(pNum);
+	var gistArray = new Array();
 	
 	
 	//for ( var i = 0; i < pNum; i++)
@@ -87,6 +93,7 @@ function search(){
 	
 	url += '?' + makeString(params); //new url created
 	
+
 	//Create JSON OBJECT
 	request.onreadystatechange = function(){
 		if(this.readyState == 4){
@@ -108,24 +115,36 @@ function search(){
 
 				if (!(desc) || desc == 'null')
 				{
-					gist[i].description = "[WARNING] No Description Found!";
+					desc = "[WARNING] No Description Found!";
 				}
 				
 				for (var prop in gist[i].files) 
 				{
-				for (var subProp in gist[i].files[prop])
-				  if (subProp === 'language')
-				  {
-					var language = gist[i].files[prop][subProp];
-				  }
-				}				
+					for (var subProp in gist[i].files[prop])
+					  if (subProp === 'language')
+					  {
+						var lang = gist[i].files[prop][subProp];
+					  }
+				}
+				
+				if (lang === undefined)
+				{
+					lang = "Language is not Recognized";
+				}
+
+				var gistObj = new Object({
+				    language: lang,
+                    description: desc,
+                    html_url: htmlUrl});
+				
+				gistArray.push(gistObj);
 					 
 			
 			}
 			
 			
-			deleteGistList(gist)
-			createGistList(gist);
+			deleteGistList(gistArray)
+			createGistList(gistArray);
 		
 		}
 	}
