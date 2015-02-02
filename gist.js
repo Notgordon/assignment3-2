@@ -18,17 +18,19 @@ function createGistList(arr){
 	var dl = document.getElementById("gistList");		 
 	for (var i = 0; i < arr.length; i++)
 	{
-	var dt = document.createElement("dt"); 
-	var dd = document.createElement("dd");
-	var a = document.createElement('a');
-	a.href = arr[i].html_url;
-	
-	
-	dd.appendChild(document.createTextNode(arr[i].language));
-	a.appendChild(document.createTextNode(arr[i].description));
-	dt.appendChild(dd);
-	dt.appendChild(a);
-	dl.appendChild(dt);
+		var dt = document.createElement("dt"); 
+		var dd = document.createElement("dd");
+		var a = document.createElement('a');
+		var rInput = document.createElement('input');
+		rInput.setAttribute('type', 'radio');
+		a.href = arr[i].html_url;
+		
+		
+		//dd.appendChild(document.createTextNode(arr.list[i].language));
+		a.appendChild(document.createTextNode(arr[i].description));
+		dt.appendChild(dd);
+		dt.appendChild(a);
+		dl.appendChild(dt);
 	}
 	
 }
@@ -38,13 +40,13 @@ function deleteGistList(arr){
 	var dl = document.getElementById("gistList");		 
 	for (var i = 0; i < arr.length; i++)
 	{
-	var dt = document.createElement("dt"); 
-	var dd = document.createElement("dd");
-	var a = document.createElement('a');
-	var del = document.createElement('del');
-	a.href = arr[i].html_url;
-	
-	dl.appendChild(del);
+		var dt = document.createElement("dt"); 
+		var dd = document.createElement("dd");
+		var a = document.createElement('a');
+		var del = document.createElement('del');
+		a.href = arr[i].html_url;
+		
+		dl.appendChild(del);
 	}
 	
 }
@@ -127,7 +129,7 @@ function search(){
 					  }
 				}
 				
-				if (lang === undefined)
+				if (lang === undefined || !(lang))
 				{
 					lang = "Language is not Recognized";
 				}
@@ -152,7 +154,7 @@ function search(){
 	request.open('GET', url);
 	request.send();
 	//}
-	//window.location= url;
+	
 }
 	
 
