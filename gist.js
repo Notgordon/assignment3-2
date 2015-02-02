@@ -15,8 +15,8 @@ function createGistList(){
 	 
 	var li = document.createElement("li"); 
 
-	li.appendChild(document.createTextNode("test"));
 	
+	li.appendChild(document.createTextNode("test"));
 	ul.appendChild(li);
 	
 }
@@ -44,17 +44,19 @@ function makeString(obj){
 function search(){
 	
 	
-	//var pNum = document.getElementsByName('pageNum');
+	
 
-	//for ( var i = document.getElementsByName('pageNum'); i > 0; i--)
+	//for ( var i = 1; i < pNum; i++)
 	//{
+	
+	var pNum = document.getElementsByName('pageNum');
 	var request = new XMLHttpRequest(); // request created
 	if(!request){
 		throw 'Request Failed';
 	}
 	var url = 'https://api.github.com/gists'; //url initialized
 	var params = {
-	  page: document.getElementsByName('pageNum') //page number
+	  page: pNum //page number
 	};
 	
 	url += '?' + makeString(params); //new url created
@@ -62,10 +64,17 @@ function search(){
 	//Create JSON OBJECT
 	request.onreadystatechange = function(){
 		if(this.readyState == 4){
+			var obj1 = this.responseText;
 			var gist = JSON.parse(this.responseText) // gist JSON object 
-			var language = null; //object properties
 			
-			createGistList();
+			for (var obj1 in gist)
+			{
+				var desc = gist.description; //object properties
+				var lang = gist.language;
+				//createGistList();
+			}
+			
+			
 		
 		}
 	}
