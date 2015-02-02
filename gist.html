@@ -5,27 +5,26 @@
 </head>
 <body>
 	<h3> Ajax Assignment: Gist List </h3>
-	<input type='number' name='pageNum'> Number of Pages
+	<input type='number' name='pageNum' min='1' max='5'> Number of Pages
 	<div>
 		<label>Python</label>
-		<input type='checkbox' name='Python'>
-	</div>
-	<div>	
+		<input type='checkbox' name="language" value='Python'><br>
+	
 		<label>JSON</label>
-		<input type='checkbox' name='JSON'>
-	</div>	
+		<input type='checkbox' name="language" value='JSON'><br>
+		
 		<label>JavaScript</label>
-		<input type='checkbox' name='JavaScript'>
-	<div>
+		<input type='checkbox' name="language" value='JavaScript'><br>
+
 		<label>SQL</label>
-		<input type='checkbox' name='SQL'>
+		<input type='checkbox' name="language" value='SQL'><br>
 	</div>
 	<input type='button' name='search' onclick='search()' value='Search'>
 
 	<section>
-		<ul id="gistList">
+		<dl id="gistList">
 		
-		</ul>
+		</dl>
 	</section>
 	
 	
